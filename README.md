@@ -6,10 +6,10 @@ To harness the complexity of pragmatic reasoning we will formulate models in a p
 
 ## Time & venue
 
-The course will be held on two weekends. On each day we convene from 9am to 5pm. Notice the change of location after the first weekend:
+The course will be held on five days. On each day we convene from 9am to 3pm in room 32/102.
 
-- October 14 & 15: room 0.02, Wilhelmstraße 19 
-- October 21 & 22: room 1.13, Wilhelmstraße 19 
+- **first block**: February 28 & March 1
+- **second block**: March 14 - 16
 
 ## Schedule
 
@@ -33,31 +33,6 @@ The course will be held on two weekends. On each day we convene from 9am to 5pm.
 - RSA models for scalar implicature (vanilla version & extension with uncertain speakers)
   - [PLU, Chapter II: Enriching literal interpretations](https://michael-franke.github.io/probLang/chapters/02-pragmatics.html)
     - Scalar implicature paper: [Goodman & Stuhlmüller (2013)](https://web.stanford.edu/~ngoodman/papers/GS-TopiCS-2013.pdf)
-
-- Non-literal language (hyperbole, irony, metaphor)
-  - [PLU, Chapter III: Inferring the Question-Under-Discussion](https://michael-franke.github.io/probLang/chapters/03-nonliteral.html)
-    - Hyperbole paper: [Kao et al., (2014)](http://cocolab.stanford.edu/papers/KaoEtAl2014-PNAS.pdf)
-    - Metaphor paper: [Kao et al., (2014)](http://cocolab.stanford.edu/papers/KaoEtAl2014-Cogsci.pdf)
-    - Irony paper: [Kao & Goodman (2015)](http://cocolab.stanford.edu/papers/KaoEtAl2015-Cogsci.pdf)
-
-##### Day 3
-
-- Adjectives ("John is tall.")
-  - - [PLU, Chapter V: Fixing free parameters](https://michael-franke.github.io/probLang/chapters/05-vagueness.html)
-  - RSA model paper: [Lassiter & Goodman (2016)](https://web.stanford.edu/~danlass/Lassiter-Goodman-adjectival-vagueness-Synthese.pdf)
-
-- Politeness ("Your lecture was interesting!")
-  - [PLU, Chapter VIII: Social reasoning about social reasoning](https://michael-franke.github.io/probLang/chapters/08-politeness.html)
-    - White lies paper: [Yoon, Tessler, et al. (2016)](http://langcog.stanford.edu/papers_new/yoon-2016-cogsci.pdf)
-    - Indirectness paper: [Yoon et al., (2017)](http://langcog.stanford.edu/papers_new/yoon-2017-cogsci.pdf)
-
-- Experimental data & Bayesian data analysis
-  - [PLU: Appendix Chapter II](https://michael-franke.github.io/probLang/chapters/app-02-BDA.html)
-    - paper with data & model comparison: [Qing & Franke (2015)](http://www.sfs.uni-tuebingen.de/~mfranke/Papers/QingFranke_2013_Variations_on_Bayes.pdf)
-
-##### Day 4
-
-- further selected chapters from [Probabilistic Language Understanding](https://michael-franke.github.io/probLang/)
 
 ## Course material
 
