@@ -16,7 +16,7 @@ The course will be held on five days. On each day we convene from 9am to 3pm in 
 ##### Day 1
 
 - Introduction to probabilistic pragmatics, the vanilla RSA model, reference games
-  - [[slides]](slides/CompPrag-2017_intro.pdf)
+  - [[slides]](slides/CompPrag-2018_intro.pdf)
 
 - Probabilistic programming in WebPPL, Bayesian inference
   - [JavaScript / WebPPL basics](http://probmods.org/chapters/13-appendix-js-basics.html)
