@@ -26,7 +26,7 @@ Jones has two boxes. One contains two gold coins, the other one gold and one sil
 
 #### Exercise 3: Inferring the bias of a coin from the observation of outcomes
 
-Following the example in [Chapter II of the BDAPPL Webbook](https://mhtess.github.io/bdappl/chapters/02-buildingModels.html), let us calculate in WebPPL what a rational agent should believe about the bias of a coin after observing $$k=25$$ heads out of $$n = 30$$ flips, if they initially believe that any bias of the coin is equally likely. Fortunately for us, a friendly programmer has already written code to do this. Unfortunately for us, there are three mistakes.
+Following the example in [Chapter II of the BDAPPL Webbook](https://mhtess.github.io/bdappl/chapters/02-buildingModels.html), let us calculate in WebPPL what a rational agent should believe about the bias of a coin after observing $$k=25$$ heads out of $$n = 30$$ flips, if they initially believe that any bias of the coin is equally likely. Fortunately for us, a friendly programmer has already written code to do this. Unfortunately for us, there are mistakes. (Hint: Some mistakes are easy to spot. But the programmer also seemed to have difficulties keeping apart WebPPL's commands for conditioning on observation: check the [documentation](http://webppl.readthedocs.io/en/master/inference/conditioning.html) on `condition`, `observe` and `factor`.)
 
 1. Correct the mistakes and send the corrected code as a .wppl file. For each mistake, explain in a few words why it is wrong and how you corrected it. You may do this as a comment in the .wppl file.
 
@@ -34,21 +34,16 @@ Following the example in [Chapter II of the BDAPPL Webbook](https://mhtess.githu
 
 ~~~~
 
-// three cards; with blue or red on either side
-var cards = [["blue", "blue"],
-             ["blue", "red"],
-             ["red", "red"]]
+var priorDistribution = Uniform({a: 0, b: 1})
 
-var model = function() {
-  var card  = uniformDraw(cards)
-  var color = uniformDraw(card)
-  condition(color == "blue")
-  return card.join("-")
-}
-
-viz.table(Infer({method: "enumerate", 
-                 model: model
-                }))
+viz(Infer({method: "rejection",
+           samples: 5000,
+           model: function() {
+             var theta = repeat(100,sample(priorDistribution))
+             var outcome = Binomial({p: theta, n: 25}) 
+             observe(outcome == 30) 
+             return theta
+           }}))
 	
 ~~~~
 
