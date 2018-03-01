@@ -34,6 +34,11 @@ The course will be held on five days. On each day we convene from 9am to 3pm in 
   - [PLU, Chapter II: Enriching literal interpretations](https://michael-franke.github.io/probLang/chapters/02-pragmatics.html)
     - Scalar implicature paper: [Goodman & Stuhlmüller (2013)](https://web.stanford.edu/~ngoodman/papers/GS-TopiCS-2013.pdf)
 
+## Homework
+
+1. [Exercises on WebPPL, Bayes rule and scalar implicatures](docs/01_homework.html) are due on
+   Monday March 12 2018.
+
 ## Course material
 
 ### Probabilistic pragmatics
