@@ -37,7 +37,7 @@ The course will be held on five days. On each day we convene from 9am to 3pm in 
 ## Homework
 
 1. [Exercises on WebPPL, Bayes rule and scalar implicatures](docs/01_homework.html) are due on
-   Monday March 12 2018.
+   Sunday March 11 2018.
 
 ## Course material
 
