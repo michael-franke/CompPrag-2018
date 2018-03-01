@@ -1,20 +1,53 @@
 ## Homework 1: Bayes & pragmatics
 
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+<link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/cdn.webppl.org/webppl-editor-1.0.1.css">
+<link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/cdn.webppl.org/webppl-viz-0.7.6.css">
+<script src="https://s3-us-west-2.amazonaws.com/cdn.webppl.org/webppl-editor-1.0.9.js"></script>
+<script src="https://s3-us-west-2.amazonaws.com/cdn.webppl.org/webppl-viz-0.7.11.js"></script>
+<script src="https://s3-us-west-2.amazonaws.com/cdn.webppl.org/webppl-v0.9.7.js" defer async></script>
 
 Solutions are due on Sunday, March 11 2018. Please send your solutions as a zipped archive. Please name the archive `lastName_HW1.zip` and send it to [Michael Franke](mailto:michael.franke@uni-osnabrueck.de). The archive should contain exactly one plain text file or a markdown file (.txt or .md) with your answers and explanations to all questions. Please keep all your answers short and to the point. Also include your name and student number in the text file. Additionally the archive should contain WebPPL code files (.wppl) for all exercises that require code. Name your code files appropriately; e.g., the code file for the 34th part of exercise 27 should be `ex27_part34.wppl`. 
 
-#### Exercise 1: 2-Box problem
+General advice develop all your code on [webppl.org](webppl.org).
 
-Use the code from [Chapter II of the BDAPPL Webbook](https://mhtess.github.io/bdappl/chapters/02-buildingModels.html) to calculate your rational beliefs about the bias of a coin. Suppose that your prior beliefs about the coin's bias $$\theta$$ are given by a Beta distribution with parameters `a = 0.5` and `b = 0.5`. In WebPPL, you can construct this prior distribution by:
+#### Exercise 1: Plot samples from a normal distribution
 
-```js
-var priorDistribution = Beta({a: 0.5, b: 0.5})
-```
+In analogy to the material from [Chapter I of the BDAPPL Webbook](https://mhtess.github.io/bdappl/chapters/01-introduction.html), where we did a similar thing for a Bernoulli distribution, plot 10,000 samples from a normal distribution with mean 0 and standard deviation 1. Please use `Gaussian(...)` or `gaussian(...)` (whichever you find more appealing), together with `repeat(...)` and `viz(...). ` (You can find more information about the normal distribution in WebPPL in the [documentation](http://docs.webppl.org/en/master/distributions.html).)
 
-The coin was flipped 30 times and we observed 25 heads. Use `viz` and `Infer` to generate a density plot from samples from the posterior distribution of the coin's bias after observing 25 heads out of 30 flips. Would you conclude from inspecting this plot that it is likely that the coin is fair, i.e., has a bias $$\theta = .5$$? (Give your short answer as a comment at the end of the code.)
+#### Exercise 2: 2-Box problem
 
-**Hint**: all of the code you need (except for a change in the prior distribution and a change in what was observed) can in principle be copy-pasted from [the relevant chapter](https://mhtess.github.io/bdappl/chapters/02-buildingModels.html), in particular one of the last code boxes on that page. However, please (re-)name variables appropriately. For example, what was a child before is now a coin flip. The propensity of helping is the probability of landing heads. Etc.
+Implement Bayesian reasoning for the 2-box problem in WebPPL in parallel to [the code for the 3-card problem](https://michael-franke.github.io/probLang/chapters/app-01-probability.html).
+
+Jones has two boxes. One contains two gold coins, the other one gold and one silver coin. Jones selects a random box and picks a random coin from it. He shows you a gold coin. What is the probability that the other coin in the box from which Jones presented the gold coin to you is also gold?
+
+#### Exercise 3: Inferring the bias of a coin from the observation of outcomes
+
+Following the example in [Chapter II of the BDAPPL Webbook](https://mhtess.github.io/bdappl/chapters/02-buildingModels.html), let us calculate in WebPPL what a rational agent should believe about the bias of a coin after observing $$k=25$$ heads out of $$n = 30$$ flips, if they initially believe that any bias of the coin is equally likely. Fortunately for us, a friendly programmer has already written code to do this. Unfortunately for us, there are three mistakes.
+
+1. Correct the mistakes and send the corrected code as a .wppl file. For each mistake, explain in a few words why it is wrong and how you corrected it. You may do this as a comment in the .wppl file.
+
+2. Plot the result of the code and interpret it. What does the graph show?
+
+~~~~
+
+// three cards; with blue or red on either side
+var cards = [["blue", "blue"],
+             ["blue", "red"],
+             ["red", "red"]]
+
+var model = function() {
+  var card  = uniformDraw(cards)
+  var color = uniformDraw(card)
+  condition(color == "blue")
+  return card.join("-")
+}
+
+viz.table(Infer({method: "enumerate", 
+                 model: model
+                }))
+	
+~~~~
 
 
 #### Exercise 2: Scalar implicatures
