@@ -32,7 +32,7 @@ Following the example in [Chapter II of the BDAPPL Webbook](https://mhtess.githu
 
 2. Plot the result of the code and interpret it. What does the graph show?
 
-~~~~
+{% highlight js %}
 
 var priorDistribution = Uniform({a: 0, b: 1})
 
@@ -45,7 +45,7 @@ viz(Infer({method: "rejection",
              return theta
            }}))
 	
-~~~~
+{% endhighlight %}
 
 
 #### Exercise 4: Scalar implicatures
