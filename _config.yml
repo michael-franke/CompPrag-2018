@@ -1,3 +1,84 @@
 remote_theme: rohanchandra/type-theme
-email_address: michael.franke@uni-osnabrueck.de
-header_text: Website for course "Computational Pragmatics"
+
+# SITE CONFIGURATION
+baseurl: "/CompPrag-2018"
+url: "https://michael-franke.github.io/"
+
+# THEME-SPECIFIC CONFIGURATION
+theme_settings:
+  # Meta
+  title: "Computational Pragmatics"
+  avatar:
+  favicon:
+  gravatar:
+  description: "Probabilistic pragmatics & probabilistic programming" # used by search engines
+
+  # Header and footer text
+  header_text: >
+     <p>Website for course <i>Computational Pragmatics</i>.</p>
+  header_text_feature_image:
+  footer_text: >
+   Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/rohanchandra/type-theme">Type Theme</a>
+  # Icons
+  rss: false
+  email_address: michael.franke@uni-osnabrueck.de
+  behance:
+  bitbucket:
+  dribbble:
+  facebook:
+  flickr:
+  gitlab:
+  github: "michael-franke/CompPrag-2018"
+  google_plus:
+  instagram:
+  linkedin:  # Full URL
+  pinterest:
+  reddit:
+  soundcloud:
+  stack_exchange:  # Full URL
+  steam:
+  tumblr:
+  twitter:
+  wordpress:
+  youtube:
+
+  # Scripts
+  google_analytics: # Tracking ID, e.g. "UA-000000-01"
+  disqus_shortname:
+  katex: true # Enable if using math markup
+  search: false # Enable the search feature
+
+  # Localization strings
+  str_follow_on: "Follow on"
+  str_rss_follow: "Follow RSS feed"
+  str_email: "Email"
+  str_next_post: "Next post"
+  str_previous_post: "Previous post"
+  str_next_page: "Next"
+  str_previous_page: "Prev"
+  str_continue_reading: "Continue reading"
+  str_javascript_required_disqus: "Please enable JavaScript to view comments."
+  str_search_no_results: "No results found."
+
+  # Colours, typography and padding
+  # Open the "_sass > base" folder, and open "_variables.scss"
+  google_fonts: "Source+Sans+Pro:400,700,700italic,400italic"
+
+  # Post navigation
+  post_navigation: false
+
+# PAGINATION
+paginate: 5
+paginate_path: "blog/page:num"
+
+# BUILD SETTINGS
+markdown: kramdown
+highlighter: rouge
+sass:
+  sass_dir: _sass
+  style: :compressed
+plugins: [jekyll-paginate]
+theme: jekyll-theme-type
+exclude:
+  - Gemfile
+  - Gemfile.lock
