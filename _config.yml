@@ -16,7 +16,7 @@ theme_settings:
   # Header and footer text
   header_text: >
      <p>Website for course <i>Computational Pragmatics</i>.<br>
-     Part of the BSc/MSc program <i>Cognitive Science</i> at the University of Osnabr&uuml;ck.<be>
+     Part of the BSc/MSc program <i>Cognitive Science</i> at the University of Osnabr&uuml;ck.<br>
      Taught by <a href="http://www.sfs.uni-tuebingen.de/~mfranke/">Michael Franke</a>.</p>
   header_text_feature_image:
   footer_text: >
