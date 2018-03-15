@@ -19,5 +19,6 @@ General advice develop all your code on [webppl.org](webppl.org).
 Take the hyperbole model of [Chapter 3](https://michael-franke.github.io/probLang/chapters/03-nonliteral.html) as a starting point.
 
 1. Make the following changes to the model:
-  - Make the utterance prior a function of $$\alpha$$, like described in [Appendix Chapter 3](https://michael-franke.github.io/probLang/chapters/app-03-costs.html)
+  - Make the utterance prior a function of $$\alpha$$, like described in [Appendix Chapter 3](https://michael-franke.github.io/probLang/chapters/app-03-costs.html).
   - Make the QUD prior a function of `valence`. If the speaker is emotionally aroused, any QUD which includes valence information should be three times more likely than any QUD without valence information. If the speaker is not emotionally aroused, any QUD which does not include valence information should be three times more likely than any QUD which includes valence information. (The intuition is that speakers want to "talk emotions" more likely whenever they are aroused. Being expressive about a mellow state of mind is infrequent.)
+  - Introduce a parameter $$\beta$$ which scales the `prizePrior`. If $$P_{old}(p)$$ is the old prior of price $$p$$, then we will now consider $$P_{new}(p) \propto P_{old}(p)^\beta$$.
