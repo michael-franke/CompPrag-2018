@@ -1,4 +1,4 @@
-## Homework 1: Bayes & pragmatics
+## Homework 2: Exploring RSA models
 
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
@@ -20,5 +20,9 @@ Take the hyperbole model of [Chapter 3](https://michael-franke.github.io/probLan
 
 1. Make the following changes to the model:
   - Make the utterance prior a function of $$\alpha$$, like described in [Appendix Chapter 3](https://michael-franke.github.io/probLang/chapters/app-03-costs.html).
-  - Make the QUD prior a function of `valence`. If the speaker is emotionally aroused, any QUD which includes valence information should be three times more likely than any QUD without valence information. If the speaker is not emotionally aroused, any QUD which does not include valence information should be three times more likely than any QUD which includes valence information. (The intuition is that speakers want to "talk emotions" more likely whenever they are aroused. Being expressive about a mellow state of mind is infrequent.)
+  - Make the QUD prior a function of `valence`. Introduce a parameter $$n$$. If the speaker is emotionally aroused, any QUD which includes valence information should be $$n$$ times more likely than any QUD without valence information. If the speaker is not emotionally aroused, any QUD which does not include valence information should be $$n$$ times more likely than any QUD which includes valence information. (The intuition is that speakers want to "talk emotions" more likely whenever they are aroused. Being expressive about a mellow state of mind is infrequent.)
   - Introduce a parameter $$\beta$$ which scales the `prizePrior`. If $$P_{old}(p)$$ is the old prior of price $$p$$, then we will now consider $$P_{new}(p) \propto P_{old}(p)^\beta$$.
+2. In the extended model, set $$\alpha = 10$$ and $$\beta = 4$$ and explore the predictions for the joint inference of the pragmatic listener of prize and valence. Describe the main differences when compared to the model as it was in [Chapter 3](https://michael-franke.github.io/probLang/chapters/03-nonliteral.html). Which predictions make more sense to you?
+3. Explore different values for $$\alpha$$, $$\beta$$, and $$n$$. Find the constellation which gives a prediction that you like best. Explain what you like about it (and possibly what you still do not like about it).
+
+
