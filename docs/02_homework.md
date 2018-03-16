@@ -1,3 +1,8 @@
+---
+title: "Homework 2"
+hide: true
+---
+
 ## Homework 2: Exploring RSA models
 
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
