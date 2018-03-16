@@ -3,8 +3,6 @@ title: "Homework 2"
 hide: true
 ---
 
-## Homework 2: Exploring RSA models
-
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 <link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/cdn.webppl.org/webppl-editor-1.0.9.css">
@@ -30,4 +28,11 @@ Take the hyperbole model of [Chapter 3](https://michael-franke.github.io/probLan
 2. In the extended model, set $$\alpha = 10$$ and $$\beta = 4$$ and explore the predictions for the joint inference of the pragmatic listener of prize and valence. Describe the main differences when compared to the model as it was in [Chapter 3](https://michael-franke.github.io/probLang/chapters/03-nonliteral.html). Which predictions make more sense to you?
 3. Explore different values for $$\alpha$$, $$\beta$$, and $$n$$. Find the constellation which gives a prediction that you like best. Explain what you like about it (and possibly what you still do not like about it).
 
+#### Exercise 2: Fuzzy semantics for quantifiers
 
+In this exercise, we will extend models on quantifier use/interpretation from [Chapter 2](https://michael-franke.github.io/probLang/chapters/02-pragmatics.html) and [Appendix Chapter 5](https://michael-franke.github.io/probLang/chapters/app-05-quantifiers.html) by implement a **fuzzy semantics**. So far we have usually assumed that an utterance is either true or false for any given state. Now we relax this assumption, to go beyond Boolean semantics, and also allow "fuzzy truth values", so to speak. A generalized meaning function $$M \colon U \times S \rightarrow [0;1]$$ maps any pair of utterance $$u$$ and state $$s$$ to a value between 0 and 1. The literal listener then updates prior beliefs about states, not by conditioning with the set of all states where $$u$$ is true (as we did before), but rather in this manner:
+
+$$P_{LL}(s \mid u) \propto P(s) M(u,s)$$
+
+1. In the first model from [Chapter 2](https://michael-franke.github.io/probLang/chapters/02-pragmatics.html), change only the meaning of the quantifier *some* so that it gets the following fuzzy truth values for states 0, ..., 3: 0.01, 0.5, 1, 1. Run the model and compare the predictions for the pragmatic listener's interpretation of *some* with this fuzzy semantics to the original one with a standard two-valued semantics. What are the differences? Which model's predictions do you think are better? Which model do you prefer conceptually? (Give short answers and good reasons for your judgements.)
+2. In the first model from [Appendix Chapter 5](https://michael-franke.github.io/probLang/chapters/app-05-quantifiers.html), exchange the given two-valued semantics for all quantifiers with one that implements an S-shaped meaning function, using [logistic functions](https://en.wikipedia.org/wiki/Logistic_function). Concretely, instead of fixing a lower and upper bound for each quantifier, now fix a triple consisting of parameter $$k$$ and parameter $$x_0$$ of the [logistic function](https://en.wikipedia.org/wiki/Logistic_function), as well as a Boolean parameter that defines whether the quantifiers truth values are increasing or decreasing as the true state gets larger (stupidly put, whether its meaning is an S-shaped curve or a "mirrored S"-shaped curve). Fix parameter values for each quantifiers meaning function and test the model. Is this a better model than the second model from [Appendix Chapter 5](https://michael-franke.github.io/probLang/chapters/app-05-quantifiers.html)? To answer this question, think about what would naturally be free parameters in each model, which we would like to infer from empirical data (maybe after formulating a specific prior for each). Which model as more "degrees of freedom", so to speak?

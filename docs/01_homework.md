@@ -3,8 +3,6 @@ title: "Homework 1"
 hide: true
 ---
 
-## Homework 1: Bayes & pragmatics
-
 <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 <link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/cdn.webppl.org/webppl-editor-1.0.9.css">
