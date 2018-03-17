@@ -61,13 +61,17 @@ $$V(s,s') = -(s - (s'+b))^2$$
 
 where $$b$$ regulates how much the speaker wants, on a social dimension, to have the listener have more positive beliefs about the true state than is warranted by reality.
 
-Assume that $$\alpha = 3$ in the new model and that the pragmatic listener has prior beliefs about $$b$$ as follows:
+Assume that $$\alpha = 3$$ in the new model and that the pragmatic listener has prior beliefs about $$b$$ as follows:
 ~~~~
 var b = categorical({vs: [0,1,2,3,4],
                      ps: [5,4,3,2,1]})
 ~~~~
 
 1. Implement this model by changing as little as possible in the code from [Chapter 9](https://michael-franke.github.io/probLang/chapters/09-politeness.html). 
-2. Inspect the model's predictions for `speaker1(1,b)` with various values for $$b$$. Compare the new model's predictions to the old one for various calls to `speaker1(1,phi)` for various values of $$phi$$. Which model, if any, is better? Which model, if any, is good? (Short answer, good reasons!)
-3. Inspect the model's predictions for `pragmaticListener("good")". If you have this function end with `return { b , state }` plot the results with `viz(listenerPosterior)` and interpret what you see.
+2. Inspect the model's predictions for `speaker1(1,b)` with various values for $$b$$. Compare the new model's predictions to the old one for various calls to `speaker1(1,phi)` for various values of $$\phi$$. Which model, if any, is better? Which model, if any, is good? (Short answer, good reasons!)
+3. Inspect the model's predictions for `pragmaticListener("good")`. If you have this function end with `return { b , state }` plot the results with `viz(listenerPosterior)` and interpret what you see.
 4. Give a parameter value for $$\alpha$$ and a prior of the pragmatic listener for $$b$$ which produces predictions for both speaker and listener that you find (most) satisfying. Briefly justify your choice.
+
+## Exercise 4: Bayesian data analysis for reference games
+
+Building on the code from [Appendix Chapter 4](https://michael-franke.github.io/probLang/chapters/app-04-BDA.html) we will run basically the same analyses for the same models, but for another data set. The data comes from [Franke & Degen (2016)](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0154854). The full data is available online ([here](http://journals.plos.org/plosone/article/file?type=supplementary&id=info:doi/10.1371/journal.pone.0154854.s007) and [here](http://journals.plos.org/plosone/article/file?type=supplementary&id=info:doi/10.1371/journal.pone.0154854.s008)), but we will work just with a summary that abstracts from individual participant's choices. Here is the [production data](), and there is the [comprehension data]().
