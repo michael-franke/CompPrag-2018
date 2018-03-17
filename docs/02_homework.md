@@ -38,3 +38,36 @@ Notice that [Chapter 9](https://michael-franke.github.io/probLang/chapters/09-po
 
 1. In the first model from [Chapter 2](https://michael-franke.github.io/probLang/chapters/02-pragmatics.html), change only the meaning of the quantifier *some* so that it gets the following fuzzy truth values for states 0, ..., 3: 0.01, 0.5, 1, 1. Run the model and compare the predictions for the pragmatic listener's interpretation of *some* with this fuzzy semantics to the original one with a standard two-valued semantics. What are the differences? Which model's predictions do you think are better? Which model do you prefer conceptually? (Give short answers and good reasons for your judgements.)
 2. In the first model from [Appendix Chapter 5](https://michael-franke.github.io/probLang/chapters/app-05-quantifiers.html), exchange the given two-valued semantics for all quantifiers with one that implements an S-shaped meaning function, using [logistic functions](https://en.wikipedia.org/wiki/Logistic_function). Concretely, instead of fixing a lower and upper bound for each quantifier, now fix a triple consisting of parameter $$k$$ and parameter $$x_0$$ of the [logistic function](https://en.wikipedia.org/wiki/Logistic_function), as well as a Boolean parameter that defines whether the quantifiers truth values are increasing or decreasing as the true state gets larger (stupidly put, whether its meaning is an S-shaped curve or a "mirrored S"-shaped curve). Fix parameter values for each quantifiers meaning function and test the model. Is this a better model than the second model from [Appendix Chapter 5](https://michael-franke.github.io/probLang/chapters/app-05-quantifiers.html)? To answer this question, think about what would naturally be free parameters in each model, which we would like to infer from empirical data (maybe after formulating a specific prior for each). Which model has more "degrees of freedom", so to speak? Which model, if any, could therefore make more precise predictions?
+
+## Exercise 3: Politeness
+
+Let us use the first model from the [chapter on polite language use](https://michael-franke.github.io/probLang/chapters/09-politeness.html), but change the speaker's utility function. Previously the social utility function was independent of the true state. The result was a speaker who is a mixture between being totally honest and calling everything *amazing*. Let us now use a social utility function that does depend on the true state: the speaker wants the (literal) listener to believe that the state is near the true state *plus an additive constant* $$b$$, which will be our new parameter that substitutes the previous mixture parameter $$\phi$$. The new parameter $$b$$ regulates how much the speaker wants to induce exaggerated beliefs in the (literal) listener.
+
+Concretely, epistemic utility remains as it was:
+
+$$
+U_{\text{epistemic}}(u; s) = \log(P_{L_0}(s \mid u))
+$$
+
+Social utility also remains the same (on the surface):
+
+$$
+U_{\text{social}}(u; s) = \mathbb{E}_{P_{L_0}(s' \mid u)}[V(s, s')]
+$$
+
+But now the value function $$V$$ is defined as a function of both the true state $$s$$ and the listener's inferred interpretation $$s'$$ as:
+
+$$V(s,s') = -(s - (s'+b))^2$$
+
+where $$b$$ regulates how much the speaker wants, on a social dimension, to have the listener have more positive beliefs about the true state than is warranted by reality.
+
+Assume that $$\alpha = 3$ in the new model and that the pragmatic listener has prior beliefs about $$b$$ as follows:
+~~~~
+var b = categorical({vs: [0,1,2,3,4],
+                     ps: [5,4,3,2,1]})
+~~~~
+
+1. Implement this model by changing as little as possible in the code from [Chapter 9](https://michael-franke.github.io/probLang/chapters/09-politeness.html). 
+2. Inspect the model's predictions for `speaker1(1,b)` with various values for $$b$$. Compare the new model's predictions to the old one for various calls to `speaker1(1,phi)` for various values of $$phi$$. Which model, if any, is better? Which model, if any, is good? (Short answer, good reasons!)
+3. Inspect the model's predictions for `pragmaticListener("good")". If you have this function end with `return { b , state }` plot the results with `viz(listenerPosterior)` and interpret what you see.
+4. Give a parameter value for $$\alpha$$ and a prior of the pragmatic listener for $$b$$ which produces predictions for both speaker and listener that you find (most) satisfying. Briefly justify your choice.
