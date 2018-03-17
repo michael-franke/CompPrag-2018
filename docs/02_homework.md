@@ -39,7 +39,7 @@ Notice that [Chapter 9](https://michael-franke.github.io/probLang/chapters/09-po
 1. In the first model from [Chapter 2](https://michael-franke.github.io/probLang/chapters/02-pragmatics.html), change only the meaning of the quantifier *some* so that it gets the following fuzzy truth values for states 0, ..., 3: 0.01, 0.5, 1, 1. Run the model and compare the predictions for the pragmatic listener's interpretation of *some* with this fuzzy semantics to the original one with a standard two-valued semantics. What are the differences? Which model's predictions do you think are better? Which model do you prefer conceptually? (Give short answers and good reasons for your judgements.)
 2. In the first model from [Appendix Chapter 5](https://michael-franke.github.io/probLang/chapters/app-05-quantifiers.html), exchange the given two-valued semantics for all quantifiers with one that implements an S-shaped meaning function, using [logistic functions](https://en.wikipedia.org/wiki/Logistic_function). Concretely, instead of fixing a lower and upper bound for each quantifier, now fix a triple consisting of parameter $$k$$ and parameter $$x_0$$ of the [logistic function](https://en.wikipedia.org/wiki/Logistic_function), as well as a Boolean parameter that defines whether the quantifiers truth values are increasing or decreasing as the true state gets larger (stupidly put, whether its meaning is an S-shaped curve or a "mirrored S"-shaped curve). Fix parameter values for each quantifiers meaning function and test the model. Is this a better model than the second model from [Appendix Chapter 5](https://michael-franke.github.io/probLang/chapters/app-05-quantifiers.html)? To answer this question, think about what would naturally be free parameters in each model, which we would like to infer from empirical data (maybe after formulating a specific prior for each). Which model has more "degrees of freedom", so to speak? Which model, if any, could therefore make more precise predictions?
 
-## Exercise 3: Politeness
+#### Exercise 3: Politeness
 
 Let us use the first model from the [chapter on polite language use](https://michael-franke.github.io/probLang/chapters/09-politeness.html), but change the speaker's utility function. Previously the social utility function was independent of the true state. The result was a speaker who is a mixture between being totally honest and calling everything *amazing*. Let us now use a social utility function that does depend on the true state: the speaker wants the (literal) listener to believe that the state is near the true state *plus an additive constant* $$b$$, which will be our new parameter that substitutes the previous mixture parameter $$\phi$$. The new parameter $$b$$ regulates how much the speaker wants to induce exaggerated beliefs in the (literal) listener.
 
@@ -72,6 +72,51 @@ var b = categorical({vs: [0,1,2,3,4],
 3. Inspect the model's predictions for `pragmaticListener("good")`. If you have this function end with `return { b , state }` plot the results with `viz(listenerPosterior)` and interpret what you see.
 4. Give a parameter value for $$\alpha$$ and a prior of the pragmatic listener for $$b$$ which produces predictions for both speaker and listener that you find (most) satisfying. Briefly justify your choice.
 
-## Exercise 4: Bayesian data analysis for reference games
+#### Exercise 4: Bayesian data analysis for reference games
 
-Building on the code from [Appendix Chapter 4](https://michael-franke.github.io/probLang/chapters/app-04-BDA.html) we will run basically the same analyses for the same models, but for another data set. The data comes from [Franke & Degen (2016)](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0154854). The full data is available online ([here](http://journals.plos.org/plosone/article/file?type=supplementary&id=info:doi/10.1371/journal.pone.0154854.s007) and [here](http://journals.plos.org/plosone/article/file?type=supplementary&id=info:doi/10.1371/journal.pone.0154854.s008)), but we will work just with a summary that abstracts from individual participant's choices. Here is the [production data](), and there is the [comprehension data]().
+Building on the code from [Appendix Chapter 4](https://michael-franke.github.io/probLang/chapters/app-04-BDA.html) we will run basically the same analyses for the same models, but for another data set. The data comes from [Franke & Degen (2016)](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0154854). The full data is available online ([here](http://journals.plos.org/plosone/article/file?type=supplementary&id=info:doi/10.1371/journal.pone.0154854.s007) and [here](http://journals.plos.org/plosone/article/file?type=supplementary&id=info:doi/10.1371/journal.pone.0154854.s008)), but we will work just with a summary that abstracts from individual participant's choices. Below is a cope snippet that includes this new data, and also allows you to flexibly (after possibly minor tweaks) to reuse the code for the vanilla RSA model in order to apply it to the classic examples from class, or the simple or complex condition from [Franke & Degen (2016)](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0154854). In this exercise we will only have one free parameter, namely $$\alpha$$, but no costs.
+
+~~~~
+
+var classic = {objects: ["blue_circle", "green_square", "blue_square"],
+               utterances: ["blue", "green", "square", "circle"],
+               salience: [71, 139, 30],
+               prod_data: { blue_circle:  {blue:  9, circle: 135, green:   0, square:  0},
+                            green_square: {blue:  0, circle:   0, green: 119, square: 25},
+                            blue_square:  {blue: 63, circle:   0, green:   0, square: 81}
+                          },
+               comp_data: {
+                 blue:   {blue_circle: 65, green_square:   0, blue_square: 115},
+                 square: {blue_circle:  0, green_square: 117, blue_square:  62}
+               },
+               triggerObj: "green_square",
+               triggerUtt : "blue"}
+
+var simple = {objects: ["redhat_robot", "redhat_bigboy", "bluehat_randall"],
+              utterances: ["bigboy", "redhat", "bluehat", "randall"],
+              salience: [0.3, 0.26, 0.44], 
+              prod_data: {redhat_bigboy: {bigboy:  779, redhat: 120, bluehat:   0, randal:  0}},
+              comp_data: {redhat: {redhat_robot: 689, redhat_bigboy: 209, bluehat_randall: 0}},
+              triggerObj: "redhat_bigboy",
+              triggerUtt: "redhat"}
+
+var complex = {objects: ["redhat_bigboy", "bluehat_bigboy", "redhat_robot"],
+               utterances: ["bigboy", "redhat", "bluehat"],
+               salience: [0.21, 0.39, 0.4],
+               prod_data: {redhat_bigboy: {bigboy:  427, redhat: 471, bluehat:   0, bluehat:  0}},
+               comp_data: {bigboy: {redhat_bigboy: 486, bluehat_bigboy: 374, redhat_robot: 0}},
+               triggerObj: "redhat_bigboy",
+               triggerUtt: "bigboy"}
+
+var game = complex
+var objects = game.objects
+var utterances = game.utterances
+var triggerUtt = game.triggerUtt
+var salience = game.salience
+var comp_data = game.comp_data
+var prod_data = game.prod_data
+
+~~~~
+
+Compute the posterior over $$\alpha$$, for all three types of games, once given data from only production, once from only comprehension and once when conditioning on both data observations. For inference, use `method: "MCMC"` with parameters `samples: 10000` and `burn: 1000`. Send us your code. Report the expected value of the posterior and the interval where its probability density is non-negligible (the latter can be a rough approximate obtained from visual inspection). Send a screenshot for $$\alpha$$'s posterior when conditioning on the whole data from the simple game. Does anything strike you as noteworthy? Anything unexpected that you can explain when you look more closely at data and model?
+
