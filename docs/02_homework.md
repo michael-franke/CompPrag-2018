@@ -78,6 +78,8 @@ Building on the code from [Appendix Chapter 4](https://michael-franke.github.io/
 
 ~~~~
 
+// Frank and Goodman (2012) RSA model
+
 var classic = {objects: ["blue_circle", "green_square", "blue_square"],
                utterances: ["blue", "green", "square", "circle"],
                salience: [71, 139, 30],
@@ -95,20 +97,30 @@ var classic = {objects: ["blue_circle", "green_square", "blue_square"],
 var simple = {objects: ["redhat_robot", "redhat_bigboy", "bluehat_randall"],
               utterances: ["bigboy", "redhat", "bluehat", "randall"],
               salience: [0.3, 0.26, 0.44], 
-              prod_data: {redhat_bigboy: {bigboy:  779, redhat: 120, bluehat:   0, randal:  0}},
-              comp_data: {redhat: {redhat_robot: 689, redhat_bigboy: 209, bluehat_randall: 0}},
+              prod_data: {redhat_bigboy: {bigboy:  779, 
+                                          redhat: 120, 
+                                          bluehat:   0, 
+                                          randal:  0}},
+              comp_data: {redhat: {redhat_robot: 689, 
+                                   redhat_bigboy: 209, 
+                                   bluehat_randall: 0}},
               triggerObj: "redhat_bigboy",
               triggerUtt: "redhat"}
 
 var complex = {objects: ["redhat_bigboy", "bluehat_bigboy", "redhat_robot"],
                utterances: ["bigboy", "redhat", "bluehat"],
                salience: [0.21, 0.39, 0.4],
-               prod_data: {redhat_bigboy: {bigboy:  427, redhat: 471, bluehat:   0, bluehat:  0}},
-               comp_data: {bigboy: {redhat_bigboy: 486, bluehat_bigboy: 374, redhat_robot: 0}},
+               prod_data: {redhat_bigboy: {bigboy:  427, 
+                                           redhat: 471, 
+                                           bluehat:   0, 
+                                           bluehat:  0}},
+               comp_data: {bigboy: {redhat_bigboy: 486, 
+                                    bluehat_bigboy: 374, 
+                                    redhat_robot: 0}},
                triggerObj: "redhat_bigboy",
                triggerUtt: "bigboy"}
 
-var game = complex
+var game = simple
 var objects = game.objects
 var utterances = game.utterances
 var triggerUtt = game.triggerUtt
