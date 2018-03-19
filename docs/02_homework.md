@@ -62,10 +62,13 @@ $$V(s,s') = -(s - (s'+b))^2$$
 where $$b$$ regulates how much the speaker wants, on a social dimension, to have the listener have more positive beliefs about the true state than is warranted by reality.
 
 Assume that $$\alpha = 3$$ in the new model and that the pragmatic listener has prior beliefs about $$b$$ as follows:
-~~~~
+
+{% highlight js %}
+
 var b = categorical({vs: [0,1,2,3,4],
                      ps: [5,4,3,2,1]})
-~~~~
+
+{% endhighlight js %}
 
 1. Implement this model by changing as little as possible in the code from [Chapter 9](https://michael-franke.github.io/probLang/chapters/09-politeness.html). 
 2. Inspect the model's predictions for `speaker1(1,b)` with various values for $$b$$. Compare the new model's predictions to the old one for various calls to `speaker1(1,phi)` for various values of $$\phi$$. Which model, if any, is better? Which model, if any, is good? (Short answer, good reasons!)
@@ -76,7 +79,7 @@ var b = categorical({vs: [0,1,2,3,4],
 
 Building on the code from [Appendix Chapter 4](https://michael-franke.github.io/probLang/chapters/app-04-BDA.html) we will run basically the same analyses for the same models, but for another data set. The data comes from [Franke & Degen (2016)](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0154854). The full data is available online ([here](http://journals.plos.org/plosone/article/file?type=supplementary&id=info:doi/10.1371/journal.pone.0154854.s007) and [here](http://journals.plos.org/plosone/article/file?type=supplementary&id=info:doi/10.1371/journal.pone.0154854.s008)), but we will work just with a summary that abstracts from individual participant's choices. To understand what these labels for objects and utterances mean, have a look at Figure 1 from [Franke & Degen (2016)](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0154854). Below is a cope snippet that includes this new data, and also allows you to flexibly (after possibly minor tweaks) reuse the code for the vanilla RSA model in order to apply it to the classic example from class, or the simple or complex condition from [Franke & Degen (2016)](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0154854). In this exercise we will only have one free parameter, namely $$\alpha$$, but no costs.
 
-~~~~
+{% highlight js %}
 
 // Frank and Goodman (2012) RSA model
 
@@ -128,7 +131,7 @@ var salience = game.salience
 var comp_data = game.comp_data
 var prod_data = game.prod_data
 
-~~~~
+{% endhighlight js %}
 
 Compute the posterior over $$\alpha$$, for all three types of games, once given data from only production, once from only comprehension and once when conditioning on both data observations. For inference, use `method: "MCMC"` with parameters `samples: 10000` and `burn: 1000`. Send us your code. Report the expected value of the posterior and the interval where its probability density is non-negligible (the latter can be a rough approximate obtained from visual inspection). Send a screenshot for $$\alpha$$'s posterior when conditioning on the whole data from the simple game. Does anything strike you as noteworthy? Anything unexpected that you can explain when you look more closely at data and model?
 
